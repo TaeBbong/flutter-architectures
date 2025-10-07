@@ -4,8 +4,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../data/weather_repository.dart';
 
-class WeatherPage extends ConsumerWidget {
-  const WeatherPage({super.key});
+class WeatherUi extends ConsumerWidget {
+  const WeatherUi({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

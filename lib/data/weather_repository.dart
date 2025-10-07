@@ -1,6 +1,4 @@
 // data/weather_repository.dart
-import 'dart:io';
-
 import 'package:http/http.dart' as http;
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -13,11 +11,9 @@ class WeatherRepository {
   // this is the data source (from the http package)
   final http.Client client;
 
-  Future<Weather> fetchWeather(String city) {
-    Future.delayed(const Duration(milliseconds: 400), () {
-      return Weather(23.55);
-    });
-    throw(const HttpException('[-] Request failed'));
+  Future<Weather> fetchWeather(String city) async {
+    await Future.delayed(const Duration(milliseconds: 400), () {});
+    return Weather(23.55);
   }
 }
 
