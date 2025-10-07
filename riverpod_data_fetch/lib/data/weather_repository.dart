@@ -1,0 +1,30 @@
+// data/weather_repository.dart
+import 'package:http/http.dart' as http;
+import 'package:riverpod_annotation/riverpod_annotation.dart';
+
+import '../domain/weather.dart';
+
+part 'weather_repository.g.dart';
+
+class WeatherRepository {
+  WeatherRepository(this.client);
+  // this is the data source (from the http package)
+  final http.Client client;
+
+  Future<Weather> fetchWeather(String city) async {
+    await Future.delayed(const Duration(milliseconds: 400), () {});
+    return Weather(23.55);
+  }
+}
+
+// this will generate a weatherRepositoryProvider
+@riverpod
+WeatherRepository weatherRepository(WeatherRepositoryRef ref) {
+  return WeatherRepository(http.Client());
+}
+
+// this will generate a fetchWeatherProvider
+@riverpod
+Future<Weather> fetchWeather(FetchWeatherRef ref, String city) {
+  return ref.watch(weatherRepositoryProvider).fetchWeather(city);
+}
